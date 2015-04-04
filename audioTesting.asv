@@ -1,0 +1,29 @@
+F=20000;
+Fs= 44100;
+t=1;
+%convert_16_bit = float(2**15);
+
+tBit = [0:p*Fs+1]/Fs;
+%print tBit[5]*float(math.pi)
+
+ys=amp*cos(2*pi*Fs*tc);
+Ls=length(ys);
+ws=hann(Ls);
+ys=times(ys,ws');
+
+
+
+%%%%%%%%%%%%%%%%%%%
+
+y=data;
+L=length(y);
+Fs=fs
+NFFT = 2^nextpow2(L); % Next power of 2 from length of y
+Y = fft(y,NFFT)/L;
+f = Fs/2*linspace(0,1,NFFT/2+1);
+
+% Plot single-sided amplitude spectrum.
+plot(f,2*abs(Y(1:NFFT/2+1))) 
+title('Single-Sided Amplitude Spectrum of y(t)')
+xlabel('Frequency (Hz)')
+ylabel('|Y(f)|')
